@@ -1,0 +1,126 @@
+configuration {
+    show-icons: true;
+    icon-theme: "Papirus Light";
+    font: "JetBrainsMono Nerd Font 12";
+}
+* {
+    background: #2c2c2c;
+    background-alt: #2c2c2c;
+    spacing: 0;
+    anchor: north;
+    location: center;
+}
+window {
+    background-color: @background;
+    border: 0;
+    padding: 0;
+    x-offset: 0;
+    y-offset: -10%;
+    width: 30%;
+    height: 21%;
+}
+mainbox {
+    padding: 0px;
+    border: 0;
+    spacing: 0%;
+    background-color: @background;
+}
+message {
+    border: 0;
+    padding: 0;
+    text-color: #fff;
+}
+textbox normal {
+    padding: 0;
+    border: 0;
+}
+listview {
+    border: 0px;
+    padding: 0em;
+    reverse: false;
+    columns: 1;
+    scrollbar: false;
+}
+element {
+    border: 0;
+    padding: 14;
+    margin: 6;
+    border-radius: 0;
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+element normal.normal {
+    text-color: #dcdccc;
+    background-color: #F5F5F500;
+}
+element normal.urgent {
+    text-color: #D75F00FF;
+    background-color: #F5F5F5FF;
+}
+element normal.active {
+    text-color: #2c2c2c;
+    background-color: #F5F5F5FF;
+}
+element selected.normal {
+    text-color: #2c2c2c;
+    background-color: #d1bacc;
+}
+element selected.urgent {
+    text-color: #F5F5F5FF;
+    background-color: #000000;
+}
+element selected.active {
+    text-color: #F5F5F5FF;
+    background-color: #000000;
+}
+element alternate.normal {
+    background-color: #2c2c2c;
+    text-color: #dcdccc;
+}
+scrollbar {
+    border: 0;
+    padding: 0;
+}
+inputbar {
+    spacing: 0;
+    border: 0;
+    padding: 0.5em 1em;
+    background-color: @transparent;
+    index: 0;
+}
+inputbar normal {
+    text-color: #dcdccc;
+}
+mode-switcher {
+    border: 0;
+    padding: 0.5em 1em;
+    background-color: @grey;
+    index: 10;
+}
+button selected {
+    text-color: #4271AEFF;
+}
+inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+entry {
+    text-color: #dcdccc;
+}
+prompt {
+    expand:	false;
+    text-color: #d1bacc;
+}
+textbox-prompt-colon {
+    expand:     false;
+    str:        "";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @normal-foreground;
+}
+error-message {
+    border: 2px;
+    padding: 1em;
+    background-color: #FF8888;
+    text-color: @back;
+}
