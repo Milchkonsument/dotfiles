@@ -3,8 +3,7 @@ if status is-interactive
 end
 
 function fish_prompt -d "Write out the prompt"
-    printf '%s%s%s ∴ %s' \
- 	(set_color 546167) (prompt_pwd) (set_color d1bacc) (set_color normal)
+    echo (set_color 555555)' '(set_color -b 555555)(set_color DDDDDD)(prompt_pwd)(set_color -b normal)(set_color 555555)' '(set_color normal)' '
 end
 
 function fish_greeting
