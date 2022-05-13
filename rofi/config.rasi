@@ -1,13 +1,14 @@
 configuration {
     show-icons: true;
-    icon-theme: "Papirus Light";
-    font: "DejaVuSans-ExtraLight 12";
+    icon-theme: "Pixelitos";
+//    font: "JetBrainsMono-NerdFont 11";
+    font: "DEC-Terminal 11";
 }
 * {
-    background: #22222222;
-    background-alt: #22222222;
-    foreground: #AAFFFFFF;
-    foreground-alt: #FFFFFF;
+    background: #FFFFFF;
+    background-alt: #FFFFFF;
+    foreground: #2c2c2c;
+    foreground-alt: #2c2c2c;
     spacing: 0;
     anchor: north;
     location: center;
@@ -17,13 +18,13 @@ window {
     background-color: @background;
     padding: 0;
     x-offset: 0;
-    y-offset: -48%;
-    width: 100%;
-    height: 98%;
-    border: 0;
+    y-offset: -7.5%;
+    width: 33%;
+    height: 15%;
+    border: 3px;
 }
 mainbox {
-    padding: 20%;
+    padding: 12;
     border: 0;
     spacing: 0%;
     background-color: @background;
@@ -46,8 +47,8 @@ listview {
 }
 element {
     border: 0;
-    padding: 28;
-    margin: 14;
+    padding: 4;
+    margin: 4;
     border-radius: 0;
 }
 element-text {
@@ -55,8 +56,8 @@ element-text {
     text-color:       inherit;
 }
 element normal.normal {
-    text-color: #AAAAAA;
-    background-color: #F5F5F500;
+    text-color: @foreground;
+    background-color: @background;
 }
 element normal.urgent {
     text-color: #D75F00FF;
@@ -64,10 +65,10 @@ element normal.urgent {
 }
 element normal.active {
     text-color: @foreground;
-    background-color: #F5F5F5FF;
+    background-color: @background;
 }
 element selected.normal {
-    text-color: #FFFFFF;
+    text-color: #999999;
     background-color: @selected-item;
 }
 element selected.urgent {
@@ -76,11 +77,11 @@ element selected.urgent {
 }
 element selected.active {
     text-color: @foreground-alt;
-    background-color: #000000;
+    background-color: @background;
 }
 element alternate.normal {
-    background-color: #00000000;
-    text-color: #AAAAAA;
+    background-color: @background;
+    text-color: @foreground;
 }
 scrollbar {
     border: 0;
@@ -89,13 +90,12 @@ scrollbar {
 inputbar {
     spacing: 0;
     border: 0;
-    padding: 0.5em 1em;
+    padding: 0;
     background-color: @background;
     index: 0;
-    border-radius: 10px;
 }
 inputbar normal {
-    text-color: #AAAAAA;
+    text-color: @foreground;
 }
 mode-switcher {
     border: 0;
@@ -104,16 +104,16 @@ mode-switcher {
     index: 10;
 }
 button selected {
-    text-color: #4271AEFF;
+    text-color: #444444;
 }
 inputbar {
     children:   [ entry ];
     spacing: 0;
 }
 entry {
-    text-color: #AAAAAA;
+    text-color: @foreground;
     placeholder: "";
-    padding: 3px 0 0 0;
+    padding: 2px 0 0 0;
 }
 prompt {
     expand:	false;

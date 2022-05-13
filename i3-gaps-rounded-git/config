@@ -29,11 +29,11 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# set $refresh_i3status killall -SIGUSR1 i3status
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -46,7 +46,7 @@ set $right semicolon
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+Return exec " konsole"
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -157,7 +157,7 @@ bindsym Mod1+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Mod1+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym Mod1+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -187,22 +187,40 @@ mode "resize" {
 bindsym Mod1+r mode "resize"
 
 # CUSTY SHIT
-exec "setxkbmap de"
-exec "feh --bg-scale /home/kusu/Pictures/background.png"
-exec "polybar kusu"
-exec "picom"
+exec " setxkbmap en"
+exec " feh --bg-scale /home/kusu/Pictures/marin-kitagawa-large.png"
+exec " polybar kusu"
+exec " picom --experimental-backend"
+exec " blugon -S 4000"
 
-for_window [class="^.*"] border normal 0
+for_window [class="^.*"] border pixel 0
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #FFFFFF #FFFFFF #ffffff #FFFFFF   #FFFFFF
-client.focused_inactive #333333 #333333 #333333 3333333   #333333
-client.unfocused        #333333 #333333 #333333 #333333   #333333
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-gaps inner 0
+gaps inner 12
 gaps outer 0
+gaps bottom 4
+gaps top 0
 
 bindsym Mod1+d exec " rofi -show run"
-bindsym Mod1+o exec " i3lock -i $HOME/Pictures/i3lock.png"
+bindsym Mod1+o exec " i3lock -e -B 10 -k --radius 120 --inside-color=00000000 --ring-color=000000 --indicator --line-color=00000000 --verif-text='' --wrong-text='' --{layout,time,date,greeter}-color=000000 --separator-color=000000 --keyhl-color=FFFFFF --bshl-color=660000 --ring-width=5 --insidever-color=00000000 --insidewrong-color=00000000 --noinput-text='' --time-str='%H:%M' --date-str='%d. %m. %y'"
+
+# Plasma integration
+# for_window [window_role="pop-up"] floating enable
+# for_window [window_role="task_dialog"] floating enable
+# for_window [title="Desktop — Plasma"] kill; floating enable; border none
+# for_window [class="yakuake"] floating enable
+# for_window [class="systemsettings"] floating enable
+# for_window [class="plasmashell"] floating enable;
+# for_window [class="Plasma"] floating enable; border none
+# for_window [title="plasma-desktop"] floating enable; border none
+# for_window [title="win7"] floating enable; border none
+# for_window [class="krunner"] floating enable; border none
+# for_window [class="Kmix"] floating enable; border none
+# for_window [class="Klipper"] floating enable; border none
+# for_window [class="Plasmoidviewer"] floating enable; border none
+# for_window [class="(?i)*nextcloud*"] floating disable
+# for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
+# no_focus [class="plasmashell" window_type="notification"]
+# bindsym XF86AudioRaiseVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"
+# bindsym XF86AudioLowerVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"
+# bindsym XF86AudioMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mute"
+# bindsym XF86AudioMicMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mic_mute"
